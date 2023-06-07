@@ -7,9 +7,9 @@ export const userLogin=createAsyncThunk('login/userLogin',async(userCredObj,{rej
     let res=await axios.post("http://localhost:4000/user/loginUser",userCredObj)
     //storing the token in session storage
     if(res.data.message==="Login success"){
-        //Set the Token to session storage after Successfull login
-        // sessionStorage.setItem("token",res.data.token);
-        localStorage.setItem("token",JSON.stringify(res.data.payload));
+        //Set the Token to local storage after Successfull login
+        
+        localStorage.setItem("token",JSON.stringify(res.data.token));
         localStorage.setItem("user",JSON.stringify(res.data.user))
         localStorage.setItem("status","success");
         return res.data
